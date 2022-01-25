@@ -18,6 +18,11 @@ Use Voice Control On MAC [Instructions](https://support.apple.com/en-us/HT210539
 python cortexaai_cli.py
 ```
 
+## Tests
+```bash
+python -m unittest discover
+```
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
