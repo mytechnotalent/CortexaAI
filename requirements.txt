@@ -1,0 +1,4 @@
+gTTS
+selenium
+pandas
+matplotlib
