@@ -19,9 +19,6 @@
 # Version 0.0.1 Alpha
 #
 
-
-from time import sleep
-
 from pages.speak import Speak
 from pages.amazon_page import AmazonPage
 
@@ -30,7 +27,6 @@ if __name__ == '__main__':
     speak = Speak()
     speak.speech('What would you like to search for?')
     text = input('What would you like to search for? ')
-    sleep(5)
     amazon_page.search_box.input_text(text)
     amazon_page.search_box_button.click()
     amazon_page.scrape()

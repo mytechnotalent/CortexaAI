@@ -50,12 +50,20 @@ class AmazonPage(BasePage):
         """
         speak = Speak()
         items = self.driver.find_elements_by_xpath(AmazonPageLocators.ITEMS)
+        items_whole_prices = self.driver.find_elements_by_xpath(AmazonPageLocators.ITEM_WHOLE_PRICES)
+        items_fractional_prices = self.driver.find_elements_by_xpath(AmazonPageLocators.ITEM_FRACTION_PRICES)
         try:
             with open('items.csv', 'a') as csvfile:
                 item_writer = csv.writer(csvfile, quoting=csv.QUOTE_MINIMAL)
                 for item in range(len(items)):
-                    print(items[item].text)
-                    item_writer.writerow([items[item].text, 39.90])
+                    print('{0} ${1}.{2}'.format(items[item].text, items_whole_prices[item].text, items_fractional_prices[item].text))
+                    item_writer.writerow([items[item].text])
+                    item_writer.writerow([items_whole_prices[item].text])
+                    item_writer.writerow([items_fractional_prices[item].text])
                     speak.speech(items[item].text)
+                    speak.speech(items_whole_prices[item].text)
+                    speak.speech('dollars and')
+                    speak.speech(items_fractional_prices[item].text)
+                    speak.speech('cents')
         except AssertionError:
             pass

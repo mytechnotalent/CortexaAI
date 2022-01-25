@@ -27,7 +27,6 @@ class TestAmazonPage(unittest.TestCase):
         # Asserts
         assert self.main_page.is_title_matches('Amazon'), "Amazon title doesn't match."
 
-
     def tearDown(self):
         """
         Method to handle test teardown
