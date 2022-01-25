@@ -10,8 +10,13 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
+## Setup Chromedriver
+```bash
+brew install chromedriver
+```
+
 ## Setup Voice Recognition
-Use Voice Control On MAC [Instructions](https://support.apple.com/en-us/HT210539)
+Use Voice Control On MAC [Instructions](https://support.apple.com/en-us/HT210539).
 
 ## Run
 ```bash
