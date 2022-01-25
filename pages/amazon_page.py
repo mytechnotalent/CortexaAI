@@ -13,7 +13,7 @@ class AmazonPage(BasePage):
     """
     Child class to handle Amazon page
     """
-    URL = 'http://amazon.com'
+    URL = 'https://amazon.com'
 
     def __init__(self, headless=True):
         """

@@ -4,20 +4,6 @@
 from selenium.webdriver.common.by import By
 
 
-class MainPageLocators(object):
-    """
-    Class to handle main page locators
-    """
-    GO_BUTTON = (By.ID, 'submit')
-
-
-class SearchResultsPageLocators(object):
-    """
-    Class to handle maing page search results locators
-    """
-    pass
-
-
 class AmazonPageLocators(object):
     """
     Class to handle Amazon page locators
