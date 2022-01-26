@@ -18,7 +18,7 @@ class AmazonPage(BasePage):
     def __init__(self, headless=True):
         """
         Attrs:
-            headless: bool
+            headless: bool, optional
         """
         super().__init__(self.URL, headless)
 
@@ -67,3 +67,17 @@ class AmazonPage(BasePage):
                     speak.speech('cents')
         except AssertionError:
             pass
+
+
+class SearchResultsPage(AmazonPage):
+    """
+    Child class to handle search results page
+    """
+    def is_results_found(self):
+        """
+        Verifies that there are search results
+
+        Returns:
+            object
+        """
+        return 'No results found.' not in self.driver.page_source

@@ -9,6 +9,7 @@ class Speak:
     """
     Class to handle text to speech
     """
+
     def __init__(self):
         pass
 

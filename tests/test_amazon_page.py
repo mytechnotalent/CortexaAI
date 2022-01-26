@@ -3,35 +3,46 @@
 
 import unittest
 
-from pages.page import BasePage
-from pages.element import BasePageElement
-from pages.locators import AmazonPageLocators
+from pages.amazon_page import AmazonPage, SearchResultsPage
 
 
 class TestAmazonPage(unittest.TestCase):
     """
     Class to test the Amazon Page functionality
     """
-    URL = 'https://amazon.com'
 
     def setUp(self):
         """
         Method to handle test setup
         """
-        self.main_page = BasePage(self.URL, False)
+        self.amazon_page = AmazonPage(False)
+        self.search_results_page = SearchResultsPage()
 
-    def test_amazon_is_in_title(self):
+    def test_amazon_is_in_page_title(self):
         """
         Tests whether the word 'Amazon' is in the page title
         """
         # Asserts
-        assert self.main_page.is_title_matches('Amazon'), "Amazon title doesn't match."
+        assert self.amazon_page.is_title_matches('Amazon'), 'Amazon title doesn\'t match.'
 
+    def test_search_result_page_returns_results(self):
+        """
+        Tests if the search result page returns results
+        """
+        # Setup
+        text = 'coffee'
+        # Interactions
+        self.amazon_page.search_box.input_text(text)
+        self.amazon_page.search_box_button.click()        
+        # Asserts
+        assert self.search_results_page.is_results_found(), 'No results found.'
+        
     def tearDown(self):
         """
         Method to handle test teardown
         """
-        self.main_page.quit()
+        self.amazon_page.quit()
+        self.search_results_page.quit()
 
 
 if __name__ == "__main__":
