@@ -35,7 +35,7 @@ class TestAmazonPage(unittest.TestCase):
         self.amazon_page.search_box.input_text(text)
         self.amazon_page.search_box_button.click()        
         # Asserts
-        assert self.amazon_search_results_page.is_results_found(), 'No results found.'
+        assert self.amazon_search_results_page.is_results_found(text), 'No results found.'
         
     def tearDown(self):
         """

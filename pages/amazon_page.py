@@ -18,7 +18,7 @@ class AmazonPage(BasePage):
     def __init__(self, headless=True):
         """
         Attrs:
-            headless: bool, optional
+            headless: bool
         """
         super().__init__(self.URL, headless)
 
@@ -73,11 +73,14 @@ class AmazonSearchResultsPage(AmazonPage):
     """
     Child class to handle search results page
     """
-    def is_results_found(self):
+    def is_results_found(self, expected_text):
         """
         Verifies that there are search results
+
+        Params:
+            expected_text: str
 
         Returns:
             object
         """
-        return 'No results found.' not in self.driver.page_source
+        return expected_text in self.driver.page_source
