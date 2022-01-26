@@ -69,7 +69,7 @@ class AmazonPage(BasePage):
             pass
 
 
-class SearchResultsPage(AmazonPage):
+class AmazonSearchResultsPage(AmazonPage):
     """
     Child class to handle search results page
     """
