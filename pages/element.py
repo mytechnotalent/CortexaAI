@@ -9,6 +9,7 @@ class BasePageElement:
     """
     Class to represent a base page element
     """
+    
     def __init__(self, driver, locator, timeout=10):
         """
         Params:
