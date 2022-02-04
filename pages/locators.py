@@ -8,6 +8,7 @@ class AmazonPageLocators(object):
     """
     Class to handle Amazon page locators
     """
+    
     SEARCH_BOX = (By.ID, 'twotabsearchtextbox')
     SEARCH_BOX_BUTTON = (By.ID, 'nav-search-submit-button')
     ITEMS = '//*[@id="search"]//*[@class="a-size-base-plus a-color-base a-text-normal"]'
