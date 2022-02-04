@@ -17,8 +17,8 @@ class AmazonPage(BasePage):
 
     def __init__(self, headless=True):
         """
-        Attrs:
-            headless: bool
+        Params:
+            headless: bool, optional
         """
         super().__init__(self.URL, headless)
 
