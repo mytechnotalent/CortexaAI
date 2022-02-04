@@ -10,7 +10,7 @@ class BasePage(object):
     """
     def __init__(self, url, headless):
         """
-        Attrs:
+        Params:
             url: str
             headless: bool
         """
