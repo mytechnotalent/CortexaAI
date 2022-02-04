@@ -13,6 +13,7 @@ class AmazonPage(BasePage):
     """
     Child class to handle Amazon page
     """
+    
     URL = 'https://amazon.com'
 
     def __init__(self, headless=True):
@@ -73,6 +74,7 @@ class AmazonSearchResultsPage(AmazonPage):
     """
     Child class to handle search results page
     """
+    
     def is_results_found(self, expected_text):
         """
         Verifies that there are search results
