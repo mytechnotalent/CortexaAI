@@ -11,7 +11,7 @@ class BasePageElement:
     """
     def __init__(self, driver, locator, timeout=10):
         """
-        Attrs:
+        Params:
             driver: object
             locator: tuple
             timeout: int, optional
