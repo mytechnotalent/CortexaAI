@@ -31,9 +31,11 @@ class TestAmazonPage(unittest.TestCase):
         """
         # Setup
         text = 'coffee'
+        
         # Interactions
         self.amazon_page.search_box.input_text(text)
-        self.amazon_page.search_box_button.click()        
+        self.amazon_page.search_box_button.click()    
+        
         # Asserts
         assert self.amazon_search_results_page.is_results_found(text), 'No results found.'
         
