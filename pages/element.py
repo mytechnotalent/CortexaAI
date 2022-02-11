@@ -58,4 +58,5 @@ class BasePageElement:
             str
         """
         text = self.element.text
+        
         return text
