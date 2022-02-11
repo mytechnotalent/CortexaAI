@@ -32,6 +32,7 @@ class AmazonPage(BasePage):
             object
         """
         locator = AmazonPageLocators.SEARCH_BOX
+        
         return BasePageElement(driver=self.driver, locator=locator)
 
     @property
@@ -43,6 +44,7 @@ class AmazonPage(BasePage):
             object
         """
         locator = AmazonPageLocators.SEARCH_BOX_BUTTON
+        
         return BasePageElement(self.driver, locator=locator)
 
     def scrape(self):
@@ -50,12 +52,15 @@ class AmazonPage(BasePage):
         Method to scrape
         """
         speak = Speak()
+        
         items = self.driver.find_elements_by_xpath(AmazonPageLocators.ITEMS)
         items_whole_prices = self.driver.find_elements_by_xpath(AmazonPageLocators.ITEM_WHOLE_PRICES)
         items_fractional_prices = self.driver.find_elements_by_xpath(AmazonPageLocators.ITEM_FRACTION_PRICES)
+        
         try:
             with open('items.csv', 'a') as csvfile:
                 item_writer = csv.writer(csvfile, quoting=csv.QUOTE_MINIMAL)
+                
                 for item in range(len(items)):
                     print('{0} ${1}.{2}'.format(items[item].text, items_whole_prices[item].text, items_fractional_prices[item].text))
                     item_writer.writerow([items[item].text])
