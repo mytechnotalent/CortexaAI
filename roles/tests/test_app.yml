@@ -1,0 +1,37 @@
+---
+- name: Test app
+  hosts: tests
+  gather_facts: false
+  tasks:
+    - name: Add containers to inventory
+      add_host:
+        name: "{{ item }}"
+        ansible_connection: docker
+      with_items:
+        - cortexaai-api-service-1
+      changed_when: false
+
+    - name: Test file
+      delegate_to: cortexaai-api-service-1
+      file:
+        path: /tmp/test.txt
+        state: touch
+        mode: u=rw,g=r,o=r
+      register: result
+      vars:
+        ansible_python_interpreter: "/usr/bin/python3"
+      changed_when: false
+
+    - debug:
+        var: result
+
+    - name: ls
+      delegate_to: cortexaai-api-service-1
+      command: ls
+      register: result
+      vars:
+        ansible_python_interpreter: "/usr/bin/python3"
+      changed_when: false
+
+    - debug:
+        var: result

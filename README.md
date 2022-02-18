@@ -16,12 +16,24 @@ pip install -r requirements.txt
 ## Step 3: OPTIONAL Setup Voice Recognition (MAC Only)
 Use Voice Control On MAC [Instructions](https://support.apple.com/en-us/HT210539).
 
-## Step 4: Run Docker Compose
+## Step 4: Run Docker Compose (Front-End)
 ```bash
-docker-compose up --scale chrome=1 -d
+docker-compose -f ./docker-compose-fe.yml up --scale chrome=1 -d
 ```
 
-## Step 5: Observe Selenium Grid Run (Including Built-In VNC Viewer)
+## Step 5: Create App Inside Docker Container
+```bash
+cd app
+docker build -t app .
+cd ..
+```
+
+## Step 6: Run Docker Compose (Back-End)
+```bash
+docker-compose -f ./docker-compose-be.yml up -d
+```
+
+## Step 7: Observe Selenium Grid Run (Including Built-In VNC Viewer)
 ```
 http://localhost:4444/ui/index.html#/sessions
 ```

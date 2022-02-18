@@ -1,0 +1,29 @@
+
+
+
+---
+- name: Get appdata facts
+  app_vars:
+  register: appdata
+
+- name: Add containers to inventory
+  add_host:
+    name: "{{ item }}" 
+    ansible_connection: docker
+    ansible_docker_extra_args: "-H=tcp://{{ appdata['hostname'] }}"
+  with_items:
+    - cortexaai_api-service
+  changed_when: false
+
+- name: Test file
+  delegate_to: cortexaai_api-service
+  file:
+    path: /tmp/test.txt
+    state: touch
+    mode: u=rw,g=r,o=r
+  register: result
+  vars:
+    ansible_python_interpreter: '/usr/bin/python3'
+  changed_when: false
+
+
