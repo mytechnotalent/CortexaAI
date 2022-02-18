@@ -13,7 +13,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Setup Voice Recognition: OPTIONAL (MAC Only)
+## OPTIONAL: Setup Voice Recognition (MAC Only)
 Use Voice Control On MAC [Instructions](https://support.apple.com/en-us/HT210539).
 
 ## Run Docker Compose
