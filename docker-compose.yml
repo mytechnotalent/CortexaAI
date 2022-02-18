@@ -1,6 +1,3 @@
-# To execute this docker-compose yml file use `docker-compose -f docker-compose-v3.yml up`
-# Add the `-d` flag at the end for detached execution
-# To stop the execution, hit Ctrl+C, and then `docker-compose -f docker-compose-v3.yml down`
 version: "3"
 services:
   chrome:
@@ -12,7 +9,6 @@ services:
       - SE_EVENT_BUS_HOST=selenium-hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-
   selenium-hub:
     image: selenium/hub:4.1.2-20220217
     container_name: selenium-hub
