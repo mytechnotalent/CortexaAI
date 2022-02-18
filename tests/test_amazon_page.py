@@ -3,6 +3,7 @@
 
 import unittest
 
+from pages.screen_shot import Screenshot
 from pages.amazon_page import AmazonPage
 
 class TestAmazonPage(unittest.TestCase):
@@ -15,6 +16,7 @@ class TestAmazonPage(unittest.TestCase):
         Method to handle test setup
         """
         self.amazon_page = AmazonPage()
+        self.screenshot = Screenshot()
 
     def test_amazon_is_in_page_title(self):
         """
@@ -41,6 +43,7 @@ class TestAmazonPage(unittest.TestCase):
         """
         Method to handle test teardown
         """
+        self.screenshot.capture(self.amazon_page.driver)
         self.amazon_page.quit()
 
 

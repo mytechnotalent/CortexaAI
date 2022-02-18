@@ -26,12 +26,12 @@ docker-compose up --scale chrome=1 -d
 http://localhost:4444/ui/index.html#/sessions
 ```
 
-## Run
+## Run (Results Populated In `items.csv`)
 ```bash
 export BROWSER=chrome && python cortexaai_cli.py
 ```
 
-## Tests
+## Tests (Including Snapshot Images)
 ```bash
 export BROWSER=chrome && python -m unittest discover
 ```
