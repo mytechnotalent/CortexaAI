@@ -3,8 +3,7 @@
 
 import unittest
 
-from pages.amazon_page import AmazonPage, AmazonSearchResultsPage
-
+from pages.amazon_page import AmazonPage
 
 class TestAmazonPage(unittest.TestCase):
     """
@@ -15,8 +14,7 @@ class TestAmazonPage(unittest.TestCase):
         """
         Method to handle test setup
         """
-        self.amazon_page = AmazonPage(False)
-        self.amazon_search_results_page = AmazonSearchResultsPage()
+        self.amazon_page = AmazonPage()
 
     def test_amazon_is_in_page_title(self):
         """
@@ -37,14 +35,13 @@ class TestAmazonPage(unittest.TestCase):
         self.amazon_page.search_box_button.click()    
         
         # Asserts
-        assert self.amazon_search_results_page.is_results_found(text), 'No results found.'
+        assert self.amazon_page.is_results_found(text), 'No results found.'
         
     def tearDown(self):
         """
         Method to handle test teardown
         """
         self.amazon_page.quit()
-        self.amazon_search_results_page.quit()
 
 
 if __name__ == "__main__":

@@ -16,12 +16,8 @@ class AmazonPage(BasePage):
     
     URL = 'https://amazon.com'
 
-    def __init__(self, headless=True):
-        """
-        Params:
-            headless: bool, optional
-        """
-        super().__init__(self.URL, headless)
+    def __init__(self):
+        super().__init__(self.URL)
 
     @property
     def search_box(self):
@@ -44,6 +40,18 @@ class AmazonPage(BasePage):
         """
         locator = AmazonPageLocators.SEARCH_BOX_BUTTON
         return BasePageElement(self.driver, locator=locator)
+
+    def is_results_found(self, expected_text):
+        """
+        Verifies that there are search results
+
+        Params:
+            expected_text: str
+
+        Returns:
+            object
+        """
+        return expected_text in self.driver.page_source
 
     def scrape(self):
         """
@@ -68,21 +76,3 @@ class AmazonPage(BasePage):
                     speak.speech('cents')
         except AssertionError:
             pass
-
-
-class AmazonSearchResultsPage(AmazonPage):
-    """
-    Child class to handle search results page
-    """
-    
-    def is_results_found(self, expected_text):
-        """
-        Verifies that there are search results
-
-        Params:
-            expected_text: str
-
-        Returns:
-            object
-        """
-        return expected_text in self.driver.page_source

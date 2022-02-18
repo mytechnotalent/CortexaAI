@@ -1,4 +1,2 @@
-gTTS
 selenium
-pandas
-matplotlib
+gTTS

@@ -13,8 +13,6 @@
 # required modules
 # pip install gTTS
 # pip install selenium
-# pip install pandas
-# pip install matplotlib
 #
 # Version 0.0.1 Alpha
 #

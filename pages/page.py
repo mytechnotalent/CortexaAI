@@ -9,16 +9,15 @@ class BasePage:
     Base class to initialize the base page that will be called from all pages
     """
     
-    def __init__(self, url, headless):
+    def __init__(self, url):
         """
         Params:
             url: str
-            headless: bool
         """
-        self.options = webdriver.ChromeOptions()
-        if headless:
-            self.options.add_argument('headless')
-        self.driver = webdriver.Chrome(options=self.options)
+        self.driver = webdriver.Remote(
+            command_executor='http://localhost:4444/wd/hub',
+            options=webdriver.ChromeOptions()
+        )
         self.driver.get(url)
 
     def is_title_matches(self, title):

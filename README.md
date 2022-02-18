@@ -3,29 +3,37 @@
 # CortexaAI
 An open-source Automation Engine that can perform full Front-End Automation for scraping data in addition to Test Automation.
 
-## Setup Environment
+## Install Docker Desktop
+Docker Desktop [Instructions](https://docs.docker.com/desktop/mac/install)
+
+## Setup Local Environment
 ```bash
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Setup Chromedriver (MAC Only)
-```bash
-brew install chromedriver
-```
-
 ## Setup Voice Recognition (MAC Only)
 Use Voice Control On MAC [Instructions](https://support.apple.com/en-us/HT210539).
 
+## Run Docker Compose
+```bash
+docker-compose up --scale chrome=1 -d
+```
+
+## Observe Selenium Grid Run (Including Built-In VNC Viewer)
+```
+http://localhost:4444/ui/index.html#/sessions
+```
+
 ## Run
 ```bash
-python cortexaai_cli.py
+export BROWSER=chrome && python cortexaai_cli.py
 ```
 
 ## Tests
 ```bash
-python -m unittest discover
+export BROWSER=chrome && python -m unittest discover
 ```
 
 ## Contributing
