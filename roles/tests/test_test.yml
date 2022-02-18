@@ -1,0 +1,27 @@
+---
+- name: Test playbook
+  hosts: tests
+  connection: local 
+  gather_facts: false
+  tasks:
+    - name: Capture sites info
+      uri:
+        url: "{{ item }}"
+      loop: "{{ sites }}"
+      register: sites
+
+    - name: Get sites length
+      debug:
+        var: sites.results|length
+
+    - name: Verify each site has OK status
+      debug:
+        msg: "{{ sites.results[item].url[8:-1] }} OK STATUS"
+      when: sites.results[item].status == 200
+      loop: [0, 1]
+
+    - name: Verify each site has expires in cookie
+      debug:
+        msg: "{{ sites.results[item].url[8:-1]}} has expiration date"
+      when: '"expires" in sites.results[item].set_cookie'
+      loop: [0, 1]

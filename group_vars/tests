@@ -1,0 +1,3 @@
+sites:
+  - 'https://google.com'
+  - 'https://ansible.com'

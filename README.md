@@ -1,7 +1,7 @@
 ![image](https://github.com/mytechnotalent/CortexaAI/blob/main/CortexaAI.jpg?raw=true)
 
 # CortexaAI
-An open-source Automation Engine that can perform full Front-End Automation for scraping data in addition to Test Automation.
+An open-source Automation Engine that can perform full Front-End & Back-End Automation for scraping data in addition to Test Automation.
 
 ## Install Docker Desktop
 Docker Desktop [Instructions](https://docs.docker.com/desktop/mac/install)
@@ -31,9 +31,14 @@ http://localhost:4444/ui/index.html#/sessions
 export BROWSER=chrome && python cortexaai_cli.py
 ```
 
-## Tests (Including Snapshot Images)
+## Front-End Tests (Including Snapshot Images)
 ```bash
 export BROWSER=chrome && python -m unittest discover
+```
+
+## Back-End Tests
+```bash
+ansible-playbook -i hosts roles/tests/main.yml
 ```
 
 ## Contributing
