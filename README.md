@@ -21,7 +21,22 @@ pip install -r requirements.txt
 ## Step 4: OPTIONAL Setup Voice Recognition (MAC Only)
 Use Voice Control On MAC [Instructions](https://support.apple.com/en-us/HT210539).
 
-## Step 5: Deploy & Run App to Kubernetes
+## Step 5: Build App Locally
+```bash
+docker build --tag cortexaai:latest .
+docker run -d --name cortexaai --publish 5000:5000 cortexaai
+```
+
+## Step 6: Install Ansible Galaxy kubernetes.core.k8s
+```bash
+pip install openshift pyyaml kubernetes
+cd /Applications/Python\ <version>
+./Install\ Certificates.command
+ansible-galaxy collection install kubernetes.core
+cd <repo>
+```
+
+## Step 7: Deploy & Run App to Kubernetes
 ```bash
 minikube delete
 minikube start --driver docker
@@ -32,12 +47,12 @@ minikube service webapp-service
 cd ..
 ```
 
-## Step 6: Run Docker Compose (Selenium Grid)
+## Step 8: Run Docker Compose (Selenium Grid)
 ```bash
 docker-compose -f ./docker-compose.yml up --scale chrome=1 -d
 ```
 
-## Step 7: Observe Selenium Grid Run (Including Built-In VNC Viewer)
+## Step 9: Observe Selenium Grid Run (Including Built-In VNC Viewer)
 ```
 http://localhost:4444/ui/index.html#/sessions
 ```
@@ -47,12 +62,12 @@ http://localhost:4444/ui/index.html#/sessions
 export BROWSER=chrome && python cortexaai_cli.py
 ```
 
-## Front-End Tests (Including Snapshot Images)
+## Run Front-End Tests (Including Snapshot Images)
 ```bash
 export BROWSER=chrome && python -m unittest discover
 ```
 
-## Back-End Tests
+## Run Back-End Tests
 ```bash
 ansible-playbook -i hosts roles/tests/main.yml
 ```

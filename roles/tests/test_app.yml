@@ -1,37 +1,76 @@
 ---
-- name: Test app
+- name: Test Minikube app
   hosts: tests
   gather_facts: false
+  connection: local
   tasks:
-    - name: Add containers to inventory
-      add_host:
-        name: "{{ item }}"
-        ansible_connection: docker
-      with_items:
-        - cortexaai-api-service-1
-      changed_when: false
+    - block:
+        - name: Ensure the webapp Namespace exists
+          kubernetes.core.k8s:
+            api_version: v1
+            kind: Namespace
+            name: webapp
+            state: present
+          register: result
 
-    - name: Test file
-      delegate_to: cortexaai-api-service-1
-      file:
-        path: /tmp/test.txt
-        state: touch
-        mode: u=rw,g=r,o=r
-      register: result
-      vars:
-        ansible_python_interpreter: "/usr/bin/python3"
-      changed_when: false
+        - debug:
+            var: result
 
-    - debug:
-        var: result
+        - name: Ensure the webapp Service exists in the webapp Namespace
+          kubernetes.core.k8s:
+            state: present
+            definition:
+              apiVersion: v1
+              kind: Service
+              metadata:
+                name: webapp-service
+                namespace: webapp
+              spec:
+                type: LoadBalancer
+                ports:
+                  - port: 5000
+                    targetPort: 5000
+                selector:
+                  app: webapp
+          register: result
 
-    - name: ls
-      delegate_to: cortexaai-api-service-1
-      command: ls
-      register: result
-      vars:
-        ansible_python_interpreter: "/usr/bin/python3"
-      changed_when: false
+        - debug:
+            var: result
 
-    - debug:
-        var: result
+        - name: Get webapp podname
+          command: kubectl get pod
+          register: webapp_podname
+          changed_when: false
+
+        - name: Shell into webapp pod and get a directory listing
+          shell: kubectl exec -it {{ webapp_podname.stdout_lines[1][0:34] }} -- /bin/sh -c 'ls'
+          register: result
+          changed_when: false
+
+        - debug:
+            var: result
+
+        - name: Shell into webapp pod and ensure there is no test dir
+          shell: kubectl exec -it {{ webapp_podname.stdout_lines[1][0:34] }} -- /bin/sh -c 'rm -rf test'
+          register: result
+          changed_when: false
+
+        - name: Shell into webapp pod and make a test dir
+          shell: kubectl exec -it {{ webapp_podname.stdout_lines[1][0:34] }} -- /bin/sh -c 'mkdir test'
+          register: result
+          changed_when: false
+
+        - name: Verify test dir exists in webapp pod
+          shell: kubectl exec -it {{ webapp_podname.stdout_lines[1][0:34] }} -- /bin/sh -c 'ls'
+          register: result
+          failed_when: "'test' in result"
+          changed_when: false
+
+        - debug:
+            var: result
+
+      always:
+        - name: Cleanup task artifacts to ensure original state
+          shell: kubectl exec -it {{ webapp_podname.stdout_lines[1][0:34] }} -- /bin/sh -c 'rm -rf test'
+          register: result
+          changed_when: false

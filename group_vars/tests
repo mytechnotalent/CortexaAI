@@ -1,3 +1,2 @@
 sites:
-  - 'https://google.com'
-  - 'https://ansible.com'
+  - 'http://localhost:5000/'
