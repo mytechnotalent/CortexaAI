@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>CortexaAI</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='ico.png') }}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="jumbotron text-center">
+        <h1>CortexaAI</h1>
+        <p>An open-source Automation Engine that can perform full Front-End & Back-End Automation for scraping data in
+            addition to Test Automation.
+        </p>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <form action="https://www.google.com/search" class="searchform" method="get" name="searchform">
+                    <input name="sitesearch" type="hidden" value="google.com">
+                    <input autocomplete="on" class="form-control search" name="q" placeholder="Search in google.com"
+                        required="required" type="text">
+                    <button class="button" type="submit">Search</button>
+                </form>
+            </div>
+            <div class="col-sm-8">
+                <h3>Identify Element Using Attribute</h3>
+                <div class="col-sm-9">
+                    <p class="first">First Element</p>
+                    <p>
+                    <div class="first">Second Element</div>
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <h3>Identify Element Using AND & OR With Attribute</h3>
+                <div class="col-sm-9">
+                    <span>
+                        <p name="first-1" id="first">First Element</p>
+                    </span>
+                    <p name="first-1" id="second">Second Element</p>
+                    <p name="second-1" id="first">Third Element</p>
+                    <p name="second-1" id="second">Fourth Element</p>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <h3>Identify Element Using text() Function With Attribute</h3>
+                <div class="col-sm-9">
+                    <p name="first" id="first">First Element Text</p>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <h3>Identify Element Using Ancestor With Child Attribute</h3>
+                <div class="col-sm-9">
+                    <div id="first-a">
+                        <div id="first-a-c">
+                            <div id="first-a-gc">
+                                <p>First Element</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <h3>Identify Element Using descendent With Parent Attribute</h3>
+                <div class="col-sm-9">
+                    <div id="first-d">
+                        <div id="first-d-c">
+                            <div id="first-d-gc">
+                                <p>First Element</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <h3>Identify Element Using parent With Child Attribute</h3>
+                <div class="col-sm-9">
+                    <div id="first-p">
+                        <div id="first-c">
+                            <p>First Element</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <h3>Identify Element Where Parent Has Unique Child Attribute</h3>
+                <div class="col-sm-9">
+                    <a href="https://python.org">
+                        <p><span id="link">First Element</span></p>
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <h3>Identify Element Using child With Parent Attribute</h3>
+                <div class="col-sm-9">
+                    <div id="second-p">
+                        <div id="second-c">
+                            <p>First Element</p>
+                        </div>
+                        <div id="second-c">
+                            <p>Second Element</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <h3>Identify Element Where Child Has Unique Parent Attribute</h3>
+                <div class="col-sm-9">
+                    <div id="first">
+                        <span>
+                            <p>First Element</p>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <h3>Identify Element Using preceding With A Child Attribute</h3>
+                <div class="col-sm-9">
+                    <div class="first-pre"></div>
+                    <div id="first-pre">
+                        <div id="first-pre-c">
+                            <div id="first-pre-gc">
+                                <div id="first-pre-ggc">
+                                    <p>First Element</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <h3>Identify Element Using preceding-sibling With A Sibling Attribute</h3>
+                <div class="col-sm-9">
+                    <div class="first-pre-s"></div>
+                    <div id="first-pre-s">
+                        <div id="first-pre-s-c">
+                            <div id="first-pre-s-gc">
+                                <div id="first-pre-s-ggc">
+                                    <p>First Element</p>
+                                </div>
+                                <div id="second-pre-s-ggc">
+                                    <p>Second Element</p>
+                                </div>
+                                <div id="third-pre-s-ggc">
+                                    <p>Third Element</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <h3>Identify Element Using following With A Parent Attribute</h3>
+                <div class="col-sm-9">
+                    <div class="first-fol"></div>
+                    <div id="first-fol">
+                        <div id="first-fol-c">
+                            <div id="first-fol-gc">
+                                <div id="first-fol-ggc">
+                                    <p>First Element</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <h3>Identify Element Using following-sibling With A Sibling Attribute</h3>
+                <div class="col-sm-9">
+                    <div class="first-fol-s"></div>
+                    <div id="first-fol-s">
+                        <div id="first-fol-s-c">
+                            <div id="first-fol-s-gc">
+                                <div id="first-fol-s-ggc">
+                                    <p>First Element</p>
+                                </div>
+                                <div id="second-fol-s-ggc">
+                                    <p>Second Element</p>
+                                </div>
+                                <div id="third-fol-s-ggc">
+                                    <p>Third Element</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <h3>Identify Element Using contains With Partial Attribute</h3>
+                <div class="col-sm-9">
+                    <p name="first" id="first-1">First Element</p>
+                    <p name="first" id="first-2">Second Element</p>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <h3>Identify Element Using contains With Partial Text</h3>
+                <div class="col-sm-9">
+                    <p name="first" id="first">First Element Foo Found</p>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <h3>Identify Element Using starts-with With Partial Text</h3>
+                <div class="col-sm-9">
+                    <p name="first" id="first">First Element Text - Dynamic Text</p>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <h3>Identify Element Using position & last With Attribute</h3>
+                <div class="col-sm-9">
+                    <table id="first" style="width:100%">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p><label class="checkbox-inline"><input type="checkbox" value="">First
+                                            Element</label></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p><label class="checkbox-inline"><input type="checkbox" value="">Second
+                                            Element</label></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p><label class="checkbox-inline"><input type="checkbox" value="">Third
+                                            Element</label></p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <h3>Identify Element Using normalize-space With Text</h3>
+                <div class="col-sm-9">
+                    <p name="first" id=" first"> First Element w/ Space</p>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <h3>Identify Element Using normalize-space With Attribute</h3>
+                <div class="col-sm-9">
+                    <p name="first" id=" first-with-space">First Element</p>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <h3>Identify Element Using translate With Text</h3>
+                <div class="col-sm-9">
+                    <p name="first" id="first">First Element w/ Case</p>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <h3>Identify Element Using normalize-space & translate With Text</h3>
+                <div class="col-sm-9">
+                    <p name="first" id="first"> First Element w/ Space & Case</p>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <h3>Identify Element Using NOT With Attribute</h3>
+                <div class="col-sm-9">
+                    <p name="first-not" id="first-not">First Element</p>
+                    <p name="second-not" id="second-not">Second Element</p>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <h3>Identify Element Using substring-before With Text</h3>
+                <div class="col-sm-9">
+                    <p name="first" id="first">First substring-before Element : Dynamic substring-before Text</p>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <h3>Identify Element Using substring-after With Text</h3>
+                <div class="col-sm-9">
+                    <p name="first" id="first">First substring-after Element : Dynamic substring-after Text</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <br><br>
+    </footer>
+</body>
+
+</html>

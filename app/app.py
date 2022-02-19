@@ -3,16 +3,15 @@
 
 # pyright: reportMissingImports=false
 
-import os
-from flask import Flask, jsonify
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
 
 @app.route('/')
-def welcome():
-    return jsonify({'status': 'api working'})
+def home():
+    return render_template('index.htm')
 
 
-if __name__ == '__main__': 
-    app.run(host='0.0.0.0', port=os.getenv('PORT'))
+if __name__ == "__main__":
+    app.run(debug=False, host='0.0.0.0', port=5000)
