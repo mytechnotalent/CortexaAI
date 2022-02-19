@@ -16,29 +16,28 @@ pip install -r requirements.txt
 ## Step 3: OPTIONAL Setup Voice Recognition (MAC Only)
 Use Voice Control On MAC [Instructions](https://support.apple.com/en-us/HT210539).
 
-## Step 4: Run Docker Compose (Front-End)
+## Step 4: Deploy & Run App to Kubernetes
 ```bash
-docker-compose -f ./docker-compose-fe.yml up --scale chrome=1 -d
-```
-
-## Step 5: Create App Inside Docker Container
-```bash
-cd app
-docker build -t app .
+minikube delete
+minikube start --driver docker
+kubectl apply -f deployment.yml
+minikube start service: webapp
+kubectl get all
+minikube service webapp-service
 cd ..
 ```
 
-## Step 6: Run Docker Compose (Back-End)
+## Step 5: Run Docker Compose (Selenium Grid)
 ```bash
-docker-compose -f ./docker-compose-be.yml up -d
+docker-compose -f ./docker-compose.yml up --scale chrome=1 -d
 ```
 
-## Step 7: Observe Selenium Grid Run (Including Built-In VNC Viewer)
+## Step 6: Observe Selenium Grid Run (Including Built-In VNC Viewer)
 ```
 http://localhost:4444/ui/index.html#/sessions
 ```
 
-## Run (Results Populated In `items.csv`)
+## CortexaAI (Results Populated In `items.csv`)
 ```bash
 export BROWSER=chrome && python cortexaai_cli.py
 ```
