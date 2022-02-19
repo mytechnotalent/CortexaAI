@@ -1,7 +1,7 @@
 ![image](https://github.com/mytechnotalent/CortexaAI/blob/main/CortexaAI.jpg?raw=true)
 
 # CortexaAI
-An open-source Automation Engine that can perform full Front-End & Back-End Automation for scraping data in addition to Test Automation.
+An open-source Automation Engine that can perform full Front-End & Back-End Automation for scraping data in addition to Test Automation with Docker and Kubernetes integration.
 
 ## Step 1: Install Docker Desktop
 Docker Desktop [Instructions](https://docs.docker.com/desktop/mac/install)
