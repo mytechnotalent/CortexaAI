@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: webapp
-          image: mytechnotalent/cortexaai:latest
+          image: mytechnotalent/cortexaai
           ports:
             - containerPort: 5000
 ---
@@ -32,4 +32,4 @@ spec:
     - protocol: TCP
       port: 5000
       targetPort: 5000
-      nodePort: 30100
+      nodePort: 30000

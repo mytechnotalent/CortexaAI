@@ -4,26 +4,26 @@
 import unittest
 
 from pages.screen_shot import Screenshot
-from pages.amazon_page import AmazonPage
+from pages.cortexaai_page import CortexaAIPage
 
-class TestAmazonPage(unittest.TestCase):
+class TestCortexaAIPage(unittest.TestCase):
     """
-    Class to test the Amazon Page functionality
+    Class to test the CortexaAI Page functionality
     """
 
     def setUp(self):
         """
         Method to handle test setup
         """
-        self.amazon_page = AmazonPage()
+        self.cortexaai_page = CortexaAIPage()
         self.screenshot = Screenshot()
 
-    def test_amazon_is_in_page_title(self):
+    def test_cortexaai_is_in_page_title(self):
         """
-        Tests whether the word 'Amazon' is in the page title
+        Tests whether the word 'CortexaAI' is in the page title
         """
         # Asserts
-        assert self.amazon_page.is_title_matches('Amazon'), 'Amazon title doesn\'t match.'
+        assert self.cortexaai_page.is_title_matches('CortexaAI'), 'CortexaAI title doesn\'t match.'
 
     def test_search_result_page_returns_results(self):
         """
@@ -32,10 +32,10 @@ class TestAmazonPage(unittest.TestCase):
         # Setup
         text = 'coffee'
         # Interactions
-        self.amazon_page.search_box.input_text(text)
-        self.amazon_page.search_box_button.click()    
+        self.cortexaai_page.search_box.input_text(text)
+        self.cortexaai_page.search_box_button.click()    
         # Asserts
-        assert self.amazon_page.is_results_found(text), 'No results found.'
+        assert self.cortexaai_page.is_results_found(text), 'No results found.'
         
     def tearDown(self):
         """

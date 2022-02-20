@@ -39,11 +39,13 @@ cd <repo>
 ## Step 7: Deploy & Run App to Kubernetes
 ```bash
 minikube delete
-minikube start --driver docker
+minikube start
+cd app
 kubectl apply -f deployment.yml
 minikube start service: webapp
 kubectl get all
-minikube service webapp-service
+minikube service webapp-service [terminal 1]
+kubectl port-forward --address 0.0.0.0 service/webapp-service 30000:5000 [terminal 2]
 cd ..
 ```
 
@@ -64,7 +66,7 @@ export BROWSER=chrome && python cortexaai_cli.py
 
 ## Run Front-End Tests (Including Snapshot Images)
 ```bash
-export BROWSER=chrome && python -m unittest discover
+export BROWSER=chrome URL=http://<internal-ip>:30000 && python -m unittest discover
 ```
 
 ## Run Back-End Tests

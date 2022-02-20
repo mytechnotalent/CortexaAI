@@ -14,9 +14,8 @@ class AmazonPage(BasePage):
     Child class to handle Amazon page
     """
     
-    URL = 'https://amazon.com'
-
     def __init__(self):
+        self.URL = 'https://amazon.com'
         super().__init__(self.URL)
 
     @property
