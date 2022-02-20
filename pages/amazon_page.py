@@ -6,7 +6,7 @@ import csv
 from pages.speak import Speak
 from pages.page import BasePage
 from pages.element import BasePageElement
-from pages.locators import AmazonPageLocators
+from pages.amazon_page_locators import AmazonPageLocators
 
 
 class AmazonPage(BasePage):

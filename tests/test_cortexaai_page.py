@@ -41,8 +41,8 @@ class TestCortexaAIPage(unittest.TestCase):
         """
         Method to handle test teardown
         """
-        self.screenshot.capture(self.amazon_page.driver)
-        self.amazon_page.quit()
+        self.screenshot.capture(self.cortexaai_page.driver)
+        self.cortexaai_page.quit()
 
 
 if __name__ == "__main__":

@@ -8,6 +8,6 @@ class CortexaAIPageLocators(object):
     """
     Class to handle CortexaAI page locators
     """
-    SEARCH_BOX = (By.CLASS_NAME, 'searchform')
+    SEARCH_BOX = (By.NAME, 'q')
     SEARCH_BOX_BUTTON = (By.CLASS_NAME, 'button')
     
