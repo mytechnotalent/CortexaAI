@@ -1,6 +1,6 @@
 FROM python:3.8
-RUN mkdir /app/website
-WORKDIR /app/website/
-ADD . /app/website/
+RUN mkdir /app
+WORKDIR /app/
+ADD . /app/
 RUN pip install -r requirements.txt
-CMD ["python", "/app/website/app.py"]
+CMD ["python", "/app/app.py"]
