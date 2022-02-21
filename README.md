@@ -23,8 +23,8 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Step 5: OPTIONAL Setup Voice Recognition (MAC Only)
-Use Voice Control On MAC [Instructions](https://support.apple.com/en-us/HT210539).
+## Step 5: Setup Voice Recognition
+[Instructions](https://support.apple.com/en-us/HT210539)
 
 ## Step 6: Build App Locally
 ```bash
