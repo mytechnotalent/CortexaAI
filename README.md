@@ -11,23 +11,31 @@ Docker Desktop [Instructions](https://docs.docker.com/desktop/mac/install)
 brew install minikube
 ```
 
-## Step 3: Setup Local Environment
+## Step 3: Install Helm
+```bash
+brew install helm
+```
+
+## Step 4: Setup Local Environment
 ```bash
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Step 4: OPTIONAL Setup Voice Recognition (MAC Only)
+## Step 5: OPTIONAL Setup Voice Recognition (MAC Only)
 Use Voice Control On MAC [Instructions](https://support.apple.com/en-us/HT210539).
 
-## Step 5: Build App Locally
+## Step 6: Build App Locally
 ```bash
+cd app/website
 docker build --tag cortexaai:latest .
 docker run -d --name cortexaai --publish 5000:5000 cortexaai
+cd ..
+cd ..
 ```
 
-## Step 6: Install Ansible Galaxy kubernetes.core.k8s
+## Step 7: Install Ansible Galaxy kubernetes.core.k8s
 ```bash
 pip install openshift pyyaml kubernetes
 cd /Applications/Python\ <version>
@@ -36,25 +44,23 @@ ansible-galaxy collection install kubernetes.core
 cd <repo>
 ```
 
-## Step 7: Deploy & Run App to Kubernetes
+## Step 8: Deploy & Run App to Kubernetes
 ```bash
+cd app
 minikube delete
 minikube start
-cd app
-kubectl apply -f deployment.yml
-minikube start service: webapp
-kubectl get all
-minikube service webapp-service [terminal 1]
-kubectl port-forward --address 0.0.0.0 service/webapp-service 30000:5000 [terminal 2]
+helm install website .
+minikube service website-cortexaai [terminal 1]
+kubectl port-forward --address 0.0.0.0 service/webapp-service 30000:80 [terminal 2]
 cd ..
 ```
 
-## Step 8: Run Docker Compose (Selenium Grid)
+## Step 9: Run Docker Compose (Selenium Grid)
 ```bash
 docker-compose -f ./docker-compose.yml up --scale chrome=1 -d
 ```
 
-## Step 9: Observe Selenium Grid Run (Including Built-In VNC Viewer)
+## Step 10: Observe Selenium Grid Run (Including Built-In VNC Viewer)
 ```
 http://localhost:4444/ui/index.html#/sessions
 ```
