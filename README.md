@@ -52,7 +52,6 @@ minikube start
 helm install website .
 minikube service website-cortexaai [terminal 1]
 kubectl port-forward --address 0.0.0.0 service/website-cortexaai 30000:80 [terminal 2]
-cd ..
 ```
 
 ## Step 9: Run Docker Compose (Selenium Grid)
