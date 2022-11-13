@@ -1,3 +1,5 @@
+<a rel="me" href="https://ioc.exchange/@kevinthomas"></a>
+
 ![image](https://github.com/mytechnotalent/CortexaAI/blob/main/CortexaAI.jpg?raw=true)
 
 # CortexaAI
