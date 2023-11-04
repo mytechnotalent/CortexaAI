@@ -1,6 +1,7 @@
 # Copyright: (c) 2021, My Techno Talent <kevin@mytechnotalent.com>
 # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
 
+from subprocess import Popen, PIPE
 from selenium import webdriver
 
 
@@ -19,6 +20,24 @@ class BasePage:
             options=webdriver.ChromeOptions()
         )
         self.driver.get(url)
+
+    @staticmethod
+    def run_cmds(cmds):
+        """
+        Static method to run a list of shell commands in one shell
+
+        Params:
+            cmds: list
+
+        Returns:
+            tuple
+        """
+        shell_cmd = ' && '.join(cmds)
+        proc = Popen(shell_cmd, shell=True, stdout=PIPE, stderr=PIPE)
+        stdout, stderr = proc.communicate()
+        stdout_results = stdout.decode().splitlines()
+        stderr_results = stderr.decode().splitlines()
+        return stdout_results, stderr_results
 
     def is_title_matches(self, title):
         """
