@@ -63,13 +63,13 @@ class TestCortexaAIPage(unittest.TestCase):
         self.assertTrue(stdout_results[1] == 'CortexaAI.jpg', f'expected second file should be CortexaAI.jpg but got "{stdout_results[1]}"')
         self.assertTrue(stdout_results[2] == 'ctf.sh', f'expected first third should be ctf.sh but got "{stdout_results[2]}"')
         self.assertTrue(stdout_results[3] == 'docker-compose.yaml', f'expected fourth file should be docker-compose.yaml but got "{stdout_results[3]}"')
-        self.assertTrue(stdout_results[4] == 'images', f'expected fifth file should be app but got "{stdout_results[4]}"')
-        self.assertTrue(stdout_results[5] == 'LICENSE', f'expected sixth file should be app but got "{stdout_results[5]}"')
-        self.assertTrue(stdout_results[6] == 'pages', f'expected seventh file should be app but got "{stdout_results[6]}"')
-        self.assertTrue(stdout_results[7] == 'README.md', f'expected eighth file should be app but got "{stdout_results[7]}"')
-        self.assertTrue(stdout_results[8] == 'requirements.txt', f'expected ninth file should be app but got "{stdout_results[8]}"')
-        self.assertTrue(stdout_results[9] == 'tests', f'expected first file tenth be app but got "{stdout_results[9]}"')
-        self.assertTrue(stdout_results[10] == 'venv', f'expected first file eleventh be app but got "{stdout_results[10]}"')
+        self.assertTrue(stdout_results[4] == 'images', f'expected fifth file should be images but got "{stdout_results[4]}"')
+        self.assertTrue(stdout_results[5] == 'LICENSE', f'expected sixth file should be LICENSE but got "{stdout_results[5]}"')
+        self.assertTrue(stdout_results[6] == 'pages', f'expected seventh file should be pages but got "{stdout_results[6]}"')
+        self.assertTrue(stdout_results[7] == 'README.md', f'expected eighth file should be README.md but got "{stdout_results[7]}"')
+        self.assertTrue(stdout_results[8] == 'requirements.txt', f'expected ninth file should be requirements.txt but got "{stdout_results[8]}"')
+        self.assertTrue(stdout_results[9] == 'tests', f'expected first file tenth be tests but got "{stdout_results[9]}"')
+        self.assertTrue(stdout_results[10] == 'venv', f'expected eleventh file eleventh be venv but got "{stdout_results[10]}"')
         
     def tearDown(self):
         """
