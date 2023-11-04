@@ -49,12 +49,6 @@ docker compose up --scale chrome=2
 http://localhost:4444/ui
 ```
 
-## CortexaAI (Results Populated In `items.csv`)
-```bash
-export BROWSER=chrome
-python cortexaai_cli.py
-```
-
 ## Run Front-End Tests MAC/LINUX (Including Snapshot Images) [OPTION 1]
 ```bash
 export BROWSER=chrome 
