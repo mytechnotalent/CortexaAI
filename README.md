@@ -32,7 +32,7 @@ cd ..
 cd ..
 ```
 
-## Step 4b: Deploy & Run App to Kubernetes [OPTION 2]
+## Step 4b: Deploy & Run App to Kubernetes via Helm [OPTION 2]
 ```bash
 cd app
 helm install website .
