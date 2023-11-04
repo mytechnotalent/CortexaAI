@@ -30,24 +30,24 @@ helm install website .
 kubectl -n default get service website-cortexaai
 ```
 
-## Step 5: Run Docker Compose (Selenium Grid)
+## Step 5: Run Selenium Grid
 ```bash
 docker compose up --scale chrome=2
 ```
 
-## Step 6: Observe Selenium Grid Run (Including Built-In VNC Viewer)
+## Step 6: Observe Selenium Grid
 ```
 http://localhost:4444/ui
 ```
 
-## Run Front-End Tests MAC/LINUX (Including Snapshot Images) [OPTION 1]
+## Run Front-End Tests MAC/LINUX [OPTION 1]
 ```bash
 export BROWSER=chrome 
 URL=http://localhost:<PORT>
 python -m unittest discover
 ```
 
-## Run Front-End Tests Windows (Including Snapshot Images) [OPTION 2]
+## Run Front-End Tests Windows [OPTION 2]
 ```bash
 $env:BROWSER="chrome"
 $env:URL="http://host.docker.internal:<PORT>"
