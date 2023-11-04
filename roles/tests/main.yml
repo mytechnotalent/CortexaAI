@@ -1,6 +1,0 @@
----
-- import_playbook: test_docker.yml
-  tags: test_docker
-
-- import_playbook: test_app.yml
-  tags: test_app

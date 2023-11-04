@@ -4,29 +4,26 @@
 An open-source Automation Engine that can perform full Front-End & Back-End Automation for scraping data in addition to Test Automation with Docker and Kubernetes integration.
 
 ## Step 1: Install Docker Desktop
-Docker Desktop [Instructions](https://docs.docker.com/desktop/mac/install)
+Docker Desktop [Instructions](https://docs.docker.com/desktop)
 
-## Step 2: Install Minikube
-```bash
-brew install minikube
-```
+## Step 2: Install Helm
+Helm [Instructions](https://helm.sh/docs/intro/install)
 
-## Step 3: Install Helm
-```bash
-brew install helm
-```
-
-## Step 4: Setup Local Environment
+## Step 3a: Setup Local Environment MAC/LINUX [OPTION 1]
 ```bash
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Step 5: Setup Voice Recognition
-[Instructions](https://support.apple.com/en-us/HT210539)
+## Step 3b: Setup Local Environment Windows [OPTION 2]
+```bash
+python3 -m venv venv
+.\venv\Scripts\activate
+pip install -r requirements.txt
+```
 
-## Step 6: Build App Locally
+## Step 4a: Build App Locally [OPTION 1]
 ```bash
 cd app/website
 docker build --tag cortexaai:latest .
@@ -35,48 +32,41 @@ cd ..
 cd ..
 ```
 
-## Step 7: Install Ansible Galaxy kubernetes.core.k8s
-```bash
-pip install openshift pyyaml kubernetes
-cd /Applications/Python\ <version>
-./Install\ Certificates.command
-ansible-galaxy collection install kubernetes.core
-cd <repo>
-```
-
-## Step 8: Deploy & Run App to Kubernetes
+## Step 4b: Deploy & Run App to Kubernetes [OPTION 2]
 ```bash
 cd app
-minikube delete
-minikube start
 helm install website .
-minikube service website-cortexaai [terminal 1]
-kubectl port-forward --address 0.0.0.0 service/website-cortexaai 30000:80 [terminal 2]
+kubectl -n default get service website-cortexaai
 ```
 
-## Step 9: Run Docker Compose (Selenium Grid)
+## Step 5: Run Docker Compose (Selenium Grid)
 ```bash
-docker-compose -f ./docker-compose.yml up --scale chrome=1 -d
+docker compose up --scale chrome=2
 ```
 
-## Step 10: Observe Selenium Grid Run (Including Built-In VNC Viewer)
+## Step 6: Observe Selenium Grid Run (Including Built-In VNC Viewer)
 ```
-http://localhost:4444/ui/index.html#/sessions
+http://localhost:4444/ui
 ```
 
 ## CortexaAI (Results Populated In `items.csv`)
 ```bash
-export BROWSER=chrome && python cortexaai_cli.py
+export BROWSER=chrome
+python cortexaai_cli.py
 ```
 
-## Run Front-End Tests (Including Snapshot Images)
+## Run Front-End Tests MAC/LINUX (Including Snapshot Images) [OPTION 1]
 ```bash
-export BROWSER=chrome URL=http://<internal-ip>:30000 && python -m unittest discover
+export BROWSER=chrome 
+URL=http://localhost:<PORT>
+python -m unittest discover
 ```
 
-## Run Back-End Tests
+## Run Front-End Tests Windows (Including Snapshot Images) [OPTION 2]
 ```bash
-ansible-playbook -i hosts roles/tests/main.yml
+$env:BROWSER="chrome"
+$env:URL="http://host.docker.internal:<PORT>"
+python -m unittest discover
 ```
 
 ## Contributing

@@ -1,2 +1,0 @@
-[tests]
-127.0.0.1 ansible_ssh_user=developer
