@@ -23,16 +23,7 @@ python3 -m venv venv
 pip install -r requirements.txt
 ```
 
-## Step 4a: Build App Locally [OPTION 1]
-```bash
-cd app/website
-docker build --tag cortexaai:latest .
-docker run -d --name cortexaai --publish 5000:5000 cortexaai
-cd ..
-cd ..
-```
-
-## Step 4b: Deploy & Run App to Kubernetes via Helm [OPTION 2]
+## Step 4: Deploy & Run App to Kubernetes via Helm
 ```bash
 cd app
 helm install website .
