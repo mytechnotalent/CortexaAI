@@ -58,16 +58,16 @@ class TestCortexaAIPage(unittest.TestCase):
         actual_element_8 = stdout_results[8]
         actual_element_9 = stdout_results[9]
         # asserts
-        self.assertTrue(stdout_results[0] == 'app', f'expected first file should be app but got "{stdout_results[0]}"')
-        self.assertTrue(stdout_results[1] == 'CortexaAI.jpg', f'expected second file should be CortexaAI.jpg but got "{stdout_results[1]}"')
-        self.assertTrue(stdout_results[2] == 'docker-compose.yaml', f'expected fourth file should be docker-compose.yaml but got "{stdout_results[2]}"')
-        self.assertTrue(stdout_results[3] == 'images', f'expected fifth file should be images but got "{stdout_results[3]}"')
-        self.assertTrue(stdout_results[4] == 'LICENSE', f'expected sixth file should be LICENSE but got "{stdout_results[4]}"')
-        self.assertTrue(stdout_results[5] == 'pages', f'expected seventh file should be pages but got "{stdout_results[5]}"')
-        self.assertTrue(stdout_results[6] == 'README.md', f'expected eighth file should be README.md but got "{stdout_results[6]}"')
-        self.assertTrue(stdout_results[7] == 'requirements.txt', f'expected ninth file should be requirements.txt but got "{stdout_results[7]}"')
-        self.assertTrue(stdout_results[8] == 'tests', f'expected first file tenth be tests but got "{stdout_results[8]}"')
-        self.assertTrue(stdout_results[9] == 'venv', f'expected eleventh file eleventh be venv but got "{stdout_results[9]}"')
+        self.assertTrue(stdout_results[0] == 'app', f'expected file should be "app" but got "{stdout_results[0]}"')
+        self.assertTrue(stdout_results[1] == 'CortexaAI.jpg', f'expected file should be "CortexaAI.jpg" but got "{stdout_results[1]}"')
+        self.assertTrue(stdout_results[2] == 'docker-compose.yaml', f'expected file should be "docker-compose.yaml" but got "{stdout_results[2]}"')
+        self.assertTrue(stdout_results[3] == 'images', f'expected folder should be "images" but got "{stdout_results[3]}"')
+        self.assertTrue(stdout_results[4] == 'LICENSE', f'expected file should be "LICENSE" but got "{stdout_results[4]}"')
+        self.assertTrue(stdout_results[5] == 'pages', f'expected folder should be "pages" but got "{stdout_results[5]}"')
+        self.assertTrue(stdout_results[6] == 'README.md', f'expected file should be "README.md" but got "{stdout_results[6]}"')
+        self.assertTrue(stdout_results[7] == 'requirements.txt', f'expected file should be "requirements.txt" but got "{stdout_results[7]}"')
+        self.assertTrue(stdout_results[8] == 'tests', f'expected folder tenth be "tests" but got "{stdout_results[8]}"')
+        self.assertTrue(stdout_results[9] == 'venv', f'expected folder eleventh be "venv" but got "{stdout_results[9]}"')
 
     def test_cortexaai_in_pod_name(self):
         """
