@@ -37,9 +37,9 @@ class TestCortexaAIPage(unittest.TestCase):
         # asserts
         assert self.cortexaai_page.is_results_found(text), 'No results found.'
         
-    def test_ls(self):
+    def test_expected_folders_and_files_are_in_repo(self):
         """
-        Tests ls
+        Tests whether the expected folders and files are in the repo
         """
         # cmds
         cmds = [
@@ -57,20 +57,34 @@ class TestCortexaAIPage(unittest.TestCase):
         actual_element_7 = stdout_results[7]
         actual_element_8 = stdout_results[8]
         actual_element_9 = stdout_results[9]
-        actual_element_10 = stdout_results[10]
         # asserts
         self.assertTrue(stdout_results[0] == 'app', f'expected first file should be app but got "{stdout_results[0]}"')
         self.assertTrue(stdout_results[1] == 'CortexaAI.jpg', f'expected second file should be CortexaAI.jpg but got "{stdout_results[1]}"')
-        self.assertTrue(stdout_results[2] == 'ctf.sh', f'expected first third should be ctf.sh but got "{stdout_results[2]}"')
-        self.assertTrue(stdout_results[3] == 'docker-compose.yaml', f'expected fourth file should be docker-compose.yaml but got "{stdout_results[3]}"')
-        self.assertTrue(stdout_results[4] == 'images', f'expected fifth file should be images but got "{stdout_results[4]}"')
-        self.assertTrue(stdout_results[5] == 'LICENSE', f'expected sixth file should be LICENSE but got "{stdout_results[5]}"')
-        self.assertTrue(stdout_results[6] == 'pages', f'expected seventh file should be pages but got "{stdout_results[6]}"')
-        self.assertTrue(stdout_results[7] == 'README.md', f'expected eighth file should be README.md but got "{stdout_results[7]}"')
-        self.assertTrue(stdout_results[8] == 'requirements.txt', f'expected ninth file should be requirements.txt but got "{stdout_results[8]}"')
-        self.assertTrue(stdout_results[9] == 'tests', f'expected first file tenth be tests but got "{stdout_results[9]}"')
-        self.assertTrue(stdout_results[10] == 'venv', f'expected eleventh file eleventh be venv but got "{stdout_results[10]}"')
-        
+        self.assertTrue(stdout_results[2] == 'docker-compose.yaml', f'expected fourth file should be docker-compose.yaml but got "{stdout_results[2]}"')
+        self.assertTrue(stdout_results[3] == 'images', f'expected fifth file should be images but got "{stdout_results[3]}"')
+        self.assertTrue(stdout_results[4] == 'LICENSE', f'expected sixth file should be LICENSE but got "{stdout_results[4]}"')
+        self.assertTrue(stdout_results[5] == 'pages', f'expected seventh file should be pages but got "{stdout_results[5]}"')
+        self.assertTrue(stdout_results[6] == 'README.md', f'expected eighth file should be README.md but got "{stdout_results[6]}"')
+        self.assertTrue(stdout_results[7] == 'requirements.txt', f'expected ninth file should be requirements.txt but got "{stdout_results[7]}"')
+        self.assertTrue(stdout_results[8] == 'tests', f'expected first file tenth be tests but got "{stdout_results[8]}"')
+        self.assertTrue(stdout_results[9] == 'venv', f'expected eleventh file eleventh be venv but got "{stdout_results[9]}"')
+
+    def test_cortexaai_in_pod_name(self):
+        """
+        Tests if cortexaai is in the pod name
+        """
+        # cmds
+        cmds = [
+            'kubectl -n default describe pods'
+        ]
+        stdout_results, stderr_results = self.cortexaai_page.run_cmds(cmds)
+        # setup 
+        expected_substring = 'cortexaai'
+        actual_element_0 = stdout_results[0]
+        # asserts
+        self.assertTrue(expected_substring in stdout_results[0], f'expected "{expected_substring}" in "actual_element_0" but it does not exist within "{stdout_results[0]}"')
+
+
     def tearDown(self):
         """
         Method to handle test teardown

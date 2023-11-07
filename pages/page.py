@@ -21,10 +21,9 @@ class BasePage:
         )
         self.driver.get(url)
 
-    @staticmethod
-    def run_cmds(cmds):
+    def run_cmds(self, cmds):
         """
-        Static method to run a list of shell commands in one shell
+        Method to run a list of shell commands in one shell
 
         Params:
             cmds: list
