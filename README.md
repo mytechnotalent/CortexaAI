@@ -1,7 +1,7 @@
 ![image](https://github.com/mytechnotalent/CortexaAI/blob/main/CortexaAI.jpg?raw=true)
 
 # CortexaAI
-An open-source Test Automation framework with Docker and Kubernetes integration.
+An open-source Python Selenium Test Automation framework with Docker and Kubernetes integration.
 
 ## Step 1: Install Docker Desktop
 Docker Desktop [Instructions](https://docs.docker.com/desktop)
